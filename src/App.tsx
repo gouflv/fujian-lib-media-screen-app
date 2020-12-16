@@ -1,21 +1,31 @@
-import React from 'react'
+import {Spin} from 'antd'
+import 'antd/dist/antd.css'
+import styled from 'styled-components'
+import {useAppInitialize} from './hooks/useAppInitialize'
+import {ChannelProvider} from './hooks/useChannels'
+import {Layout} from './layouts'
+import {Main} from './views/main'
+
+const Loading = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`
 
 function App() {
+  const { loading } = useAppInitialize()
+
+  if (loading) {
+    return <Loading><Spin size={'large'} /></Loading>
+  }
   return (
     <div className='App'>
-      <header className='App-header'>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
+      <ChannelProvider>
+        <Layout>
+          <Main />
+        </Layout>
+      </ChannelProvider>
     </div>
   )
 }
