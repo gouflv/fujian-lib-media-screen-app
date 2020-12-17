@@ -28,9 +28,7 @@ export const ArticleItem: FC<{
       <CoverImage url={props.thumb} height={props.thumbHeight || 180} />
       {props.title && (
         <div className='content'>
-          <div className='title'>
-            <TextEllipsis>{props.title}</TextEllipsis>
-          </div>
+          <TextEllipsis className='title'>{props.title}</TextEllipsis>
         </div>
       )}
     </ArticleItemBox>
