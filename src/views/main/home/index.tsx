@@ -27,7 +27,7 @@ export const HomePage = () => {
         <Panel>
           <Swiper
             items={swiperItems}
-            renderItem={data => <CoverImage url={data.thumbnail} height={390} />}
+            renderItem={data => <CoverImage url={data.thumbnail} />}
             onClick={() => {}}
           />
         </Panel>

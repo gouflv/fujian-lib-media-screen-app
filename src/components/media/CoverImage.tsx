@@ -15,12 +15,12 @@ const BgBox = styled.div<{ url }>`
 `
 
 const Wrapper = styled.div<{ width?, height? }>`
-  flex: 0 0 auto;
+  flex: auto;
   position: relative;
-  height: ${props => px2vw(props.height || 300)};
+  height: ${props => props.height ? px2vw(props.height) : 'auto'};
 `
 
-export const CoverImage: FC<{ url: string, height: number }> = props => (
+export const CoverImage: FC<{ url: string, height?: number }> = props => (
   <Wrapper className='cover-image' height={props.height}>
     <BgBox className='image' url={props.url} />
   </Wrapper>
