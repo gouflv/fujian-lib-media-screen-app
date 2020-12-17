@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import styled from 'styled-components'
-import { useChannelContext } from '../hooks/useChannels'
+import { useChannelContext } from '../hooks/useChannelContext'
 import { ThemeProps } from '../styles/theme'
 import { px2vw } from '../styles/utils'
 

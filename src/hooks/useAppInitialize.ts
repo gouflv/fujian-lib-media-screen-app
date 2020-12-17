@@ -8,12 +8,14 @@ export const useAppInitialize = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    forkJoin([
+    const subscription = forkJoin([
       request.post('auth', DeviceBridge.getAuthParams()),
       store.channel.findAll()
     ]).subscribe(() => {
       setLoading(false)
     })
+
+    return subscription.unsubscribe
   }, [])
 
   return {

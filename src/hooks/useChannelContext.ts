@@ -24,11 +24,12 @@ const [ChannelProvider, useChannelContext] = constate(() => {
   }
 
   useEffect(() => {
-    store.channel.findAll().subscribe(value => {
+    const subscription = store.channel.findAll().subscribe(value => {
       setLoading(false)
       setChannels(value)
       setTopChannel(_.first(value) as Channel)
     })
+    return subscription.unsubscribe
   }, [])
 
   return {

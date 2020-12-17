@@ -7,12 +7,12 @@ import { GlobalStyle } from './styles/global'
 import { theme } from './styles/theme'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById('root')
 )
 

@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { useCallback, useEffect, useState } from 'react'
 import { store } from '../stores'
 import { PageModule } from '../typing'
-import { useChannelContext } from './useChannels'
+import { useChannelContext } from './useChannelContext'
 
 export function usePageModule() {
   const { currentChannel } = useChannelContext()
@@ -11,12 +11,16 @@ export function usePageModule() {
   const [pageModule, set] = useState<PageModule>()
 
   useEffect(() => {
-    if (currentChannel[1]) {
-      store.pageModule.findPageModule(currentChannel[1].id).subscribe(data => {
+    if (!currentChannel[1]) {
+      return
+    }
+    const subscription = store.pageModule
+      .findPageModule(currentChannel[1].id)
+      .subscribe(data => {
         set(data)
         setLoading(false)
       })
-    }
+    return () => subscription && subscription.unsubscribe()
   }, [currentChannel])
 
   const findModuleArticles = useCallback(

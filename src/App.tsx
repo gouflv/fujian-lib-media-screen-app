@@ -1,8 +1,10 @@
 import { Spin } from 'antd'
 import styled from 'styled-components'
 import { useAppInitialize } from './hooks/useAppInitialize'
-import { ChannelProvider } from './hooks/useChannels'
+import { ChannelProvider } from './hooks/useChannelContext'
+import { DialogProvider } from './hooks/useDialogContext'
 import { Layout } from './layouts'
+import { GlobalDialog } from './views/dialog'
 import { Main } from './views/main'
 
 const Loading = styled.div`
@@ -25,9 +27,12 @@ function App() {
   return (
     <div className='App'>
       <ChannelProvider>
-        <Layout>
-          <Main />
-        </Layout>
+        <DialogProvider>
+          <Layout>
+            <Main />
+            <GlobalDialog />
+          </Layout>
+        </DialogProvider>
       </ChannelProvider>
     </div>
   )
