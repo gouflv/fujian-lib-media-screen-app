@@ -1,20 +1,14 @@
-import {FC} from 'react'
+import { FC } from 'react'
 import styled from 'styled-components'
-import {px2vw} from '../../styles/utils'
+import { px2vw } from '../../styles/utils'
 
 interface PanelProps {
   header?: string
 }
-export const Panel: FC<PanelProps> = (props) => (
+export const Panel: FC<PanelProps> = props => (
   <Section className='panel'>
-    {props.header && (
-      <div className='header'>
-        {props.header}
-      </div>
-    )}
-    <div className='body'>
-      {props.children}
-    </div>
+    {props.header && <div className='header'>{props.header}</div>}
+    <div className='body'>{props.children}</div>
   </Section>
 )
 

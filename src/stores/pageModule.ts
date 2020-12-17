@@ -1,52 +1,51 @@
 import _ from 'lodash'
-import {forkJoin} from 'rxjs'
-import {map, mergeMap} from 'rxjs/operators'
-import {request} from '../api'
-import {Article, ModuleArticles, PageModule} from '../typing'
-import {store} from './index'
+import { forkJoin } from 'rxjs'
+import { map, mergeMap } from 'rxjs/operators'
+import { request } from '../api'
+import { Article, ModuleArticles, PageModule } from '../typing'
+import { store } from './index'
 
 class PageModuleStore {
-
   findPageModule(channelId: number) {
-    return store.channel.findSubChannel(channelId)
-      .pipe(
-        mergeMap(channels =>
-          forkJoin(
-            _.map(channels, c => this.findArticle({channelId: c.id}))
-          ).pipe(
-            map(articlesGroup =>
-              _.map(channels, (channel, i) => ({
-                channel,
-                articles: articlesGroup[i]
-              } as ModuleArticles))
+    return store.channel.findSubChannel(channelId).pipe(
+      mergeMap(channels =>
+        forkJoin(
+          _.map(channels, c => this.findArticle({ channelId: c.id }))
+        ).pipe(
+          map(articlesGroup =>
+            _.map(
+              channels,
+              (channel, i) =>
+                ({
+                  channel,
+                  articles: articlesGroup[i]
+                } as ModuleArticles)
             )
           )
-        ),
-        mergeMap(ma =>
-          forkJoin([
-            this.findArticle({ channelId })
-          ]).pipe(
-            map(articles => ({
-              articles: articles[0],
-              modules: ma
-            } as PageModule))
+        )
+      ),
+      mergeMap(ma =>
+        forkJoin([this.findArticle({ channelId })]).pipe(
+          map(
+            articles =>
+              ({
+                articles: articles[0],
+                modules: ma
+              } as PageModule)
           )
         )
       )
+    )
   }
 
-  findArticle({
-    channelId,
-    page = 0,
-    size = 20
-  }) {
-    return request.get('article/api/articles', {
-      chnlId: channelId,
-      page: page,
-      size
-    }).pipe(
-      map(data => _.map(data, reduceArticle))
-    )
+  findArticle({ channelId, page = 0, size = 20 }) {
+    return request
+      .get('article/api/articles', {
+        chnlId: channelId,
+        page: page,
+        size
+      })
+      .pipe(map(data => _.map(data, reduceArticle)))
   }
 }
 

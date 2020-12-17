@@ -1,7 +1,7 @@
 import 'antd/dist/antd.css'
-import {createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 import 'swiper/swiper-bundle.css'
-import {px2vw} from './utils'
+import { px2vw } from './utils'
 
 export const GlobalStyle = createGlobalStyle`
   * {

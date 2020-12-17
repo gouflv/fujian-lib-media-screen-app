@@ -1,6 +1,6 @@
 import { rgba } from 'polished'
-import {css} from 'styled-components'
-import {px2vw} from './utils'
+import { css } from 'styled-components'
+import { px2vw } from './utils'
 
 export const theme = {
   font: {
@@ -11,7 +11,7 @@ export const theme = {
   },
   color: {
     text: '#333',
-    blue: '#3b83b4',
+    blue: '#3b83b4'
   },
   border: {
     radius: px2vw(16)

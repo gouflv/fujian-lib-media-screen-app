@@ -1,6 +1,6 @@
-import {FC} from 'react'
+import { FC } from 'react'
 import styled from 'styled-components'
-import {px2vw} from '../../styles/utils'
+import { px2vw } from '../../styles/utils'
 
 const BgBox = styled.div<{ url }>`
   position: absolute;
@@ -14,13 +14,13 @@ const BgBox = styled.div<{ url }>`
   background-image: url(${props => props.url});
 `
 
-const Wrapper = styled.div<{ width?, height? }>`
+const Wrapper = styled.div<{ width?; height? }>`
   flex: auto;
   position: relative;
-  height: ${props => props.height ? px2vw(props.height) : 'auto'};
+  height: ${props => (props.height ? px2vw(props.height) : 'auto')};
 `
 
-export const CoverImage: FC<{ url: string, height?: number }> = props => (
+export const CoverImage: FC<{ url: string; height?: number }> = props => (
   <Wrapper className='cover-image' height={props.height}>
     <BgBox className='image' url={props.url} />
   </Wrapper>

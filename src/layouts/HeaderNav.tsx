@@ -1,15 +1,15 @@
 import clsx from 'clsx'
 import _ from 'lodash'
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import {HomeSubChannelName} from '../config'
-import {useChannelContext} from '../hooks/useChannels'
-import {ThemeProps} from '../styles/theme'
-import {px2vw} from '../styles/utils'
-import {Channel} from '../typing'
+import { HomeSubChannelName } from '../config'
+import { useChannelContext } from '../hooks/useChannels'
+import { ThemeProps } from '../styles/theme'
+import { px2vw } from '../styles/utils'
+import { Channel } from '../typing'
 
 export const HeaderNav = () => {
-  const {currentChannel, setSubChannel} = useChannelContext()
+  const { currentChannel, setSubChannel } = useChannelContext()
 
   const [menu, setMenu] = useState<Channel[]>([])
 
@@ -46,10 +46,12 @@ export const HeaderNav = () => {
           <li
             key={m.id}
             className={clsx({
-              'active': m === currentChannel[1]
+              active: m === currentChannel[1]
             })}
             onClick={() => onClick(m)}
-          >{m.name}</li>
+          >
+            {m.name}
+          </li>
         ))}
       </ol>
     </Nav>

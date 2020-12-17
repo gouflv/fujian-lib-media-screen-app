@@ -1,12 +1,11 @@
 import _ from 'lodash'
-import {forkJoin, of} from 'rxjs'
-import {map, mergeMap, tap} from 'rxjs/operators'
-import {request} from '../api'
-import {TopChannels} from '../config'
-import {Channel} from '../typing'
+import { forkJoin, of } from 'rxjs'
+import { map, mergeMap, tap } from 'rxjs/operators'
+import { request } from '../api'
+import { TopChannels } from '../config'
+import { Channel } from '../typing'
 
 class ChannelStore {
-
   channels: Channel[] = []
 
   findAll() {
@@ -17,27 +16,26 @@ class ChannelStore {
     return ChannelStore.findChannel().pipe(
       map(data => this.parseChannelData(data)),
       mergeMap(data =>
-        forkJoin(_.map(data, c => this.findSubChannel(c.id)))
-          .pipe(
-            map(subChannels =>
-              _.map(data, (d, i) => ({
-                ...d,
-                children: subChannels[i]
-              }))
-            )
+        forkJoin(_.map(data, c => this.findSubChannel(c.id))).pipe(
+          map(subChannels =>
+            _.map(data, (d, i) => ({
+              ...d,
+              children: subChannels[i]
+            }))
           )
+        )
       ),
-      tap(data => this.channels = data)
+      tap(data => (this.channels = data))
     )
   }
 
   findSubChannel(parentId: number) {
-    return request.get('article/api/channels/getChildId', {
-      channelId: parentId,
-      size: 100
-    }).pipe(
-      map(data => _.map(data, reduceChannel))
-    )
+    return request
+      .get('article/api/channels/getChildId', {
+        channelId: parentId,
+        size: 100
+      })
+      .pipe(map(data => _.map(data, reduceChannel)))
   }
 
   private parseChannelData(data) {

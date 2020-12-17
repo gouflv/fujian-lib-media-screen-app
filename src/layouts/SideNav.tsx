@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import styled from 'styled-components'
-import {useChannelContext} from '../hooks/useChannels'
-import {ThemeProps} from '../styles/theme'
-import {px2vw} from '../styles/utils'
+import { useChannelContext } from '../hooks/useChannels'
+import { ThemeProps } from '../styles/theme'
+import { px2vw } from '../styles/utils'
 
 export const SideNav = () => {
   const { channels, currentChannel, setTopChannel } = useChannelContext()
@@ -19,16 +19,16 @@ export const SideNav = () => {
     <Side>
       <nav>
         <ol>
-          {channels.map(c =>
+          {channels.map(c => (
             <li
               className={clsx({
-                'active': c === currentChannel[0]
+                active: c === currentChannel[0]
               })}
               key={c.id}
-              dangerouslySetInnerHTML={{ __html: splitName(c.name)}}
+              dangerouslySetInnerHTML={{ __html: splitName(c.name) }}
               onClick={() => onClick(c)}
             />
-          )}
+          ))}
         </ol>
       </nav>
     </Side>
@@ -64,7 +64,7 @@ const Side = styled.aside`
       height: ${px2vw(14)};
       border-radius: 100%;
       background: #fff;
-      margin-bottom: ${px2vw( 8)};
+      margin-bottom: ${px2vw(8)};
     }
 
     &.active {

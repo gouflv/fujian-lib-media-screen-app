@@ -1,5 +1,5 @@
-import {channel} from './channel'
-import {pageModule} from './pageModule'
+import { channel } from './channel'
+import { pageModule } from './pageModule'
 
 export const store = {
   channel,

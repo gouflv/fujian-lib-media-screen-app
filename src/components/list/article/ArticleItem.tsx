@@ -1,9 +1,9 @@
-import {FC} from 'react'
+import { FC } from 'react'
 import styled from 'styled-components'
-import {borderRadius, boxShadow} from '../../../styles/theme'
-import {px2vw} from '../../../styles/utils'
-import {CoverImage} from '../../media/CoverImage'
-import {TextEllipsis} from '../../text/TextEllipsis'
+import { borderRadius, boxShadow } from '../../../styles/theme'
+import { px2vw } from '../../../styles/utils'
+import { CoverImage } from '../../media/CoverImage'
+import { TextEllipsis } from '../../text/TextEllipsis'
 
 export const ArticleItemBox = styled.div`
   flex: auto;

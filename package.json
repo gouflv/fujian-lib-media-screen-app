@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "lint": "eslint --ext js,ts,tsx --fix src"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "lint": "eslint --ext js,ts,tsx --fix src",
+    "format": "prettier --write ."
   },
   "dependencies": {
-    "@craco/craco": "^6.0.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -35,27 +35,16 @@
   "devDependencies": {
     "@types/lodash": "^4.14.165",
     "@types/styled-components": "^5.1.5",
-    "postcss-px-to-viewport": "^1.1.1"
+    "eslint-config-prettier": "^7.0.0",
+    "postcss-px-to-viewport": "^1.1.1",
+    "prettier": "^2.2.1"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ],
-    "rules": {
-      "semi": [
-        "error",
-        "never"
-      ],
-      "quotes": [
-        "error",
-        "single"
-      ],
-      "jsx-quotes": [
-        "error",
-        "prefer-single"
-      ]
-    }
+      "react-app/jest",
+      "prettier"
+    ]
   },
   "browserslist": {
     "production": [

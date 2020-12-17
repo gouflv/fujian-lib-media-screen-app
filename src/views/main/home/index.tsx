@@ -1,15 +1,14 @@
-import {Spin} from 'antd'
-import {useEffect, useState} from 'react'
-import {FlexGrid} from '../../../components/grid/FlexGrid'
-import {ArticleItem} from '../../../components/list/article/ArticleItem'
-import {CoverImage} from '../../../components/media/CoverImage'
-import {Swiper} from '../../../components/media/Swiper'
-import {usePageModule} from '../../../hooks/usePageModule'
-import {Article} from '../../../typing'
-import {Panel} from '../../shared/Panel'
+import { Spin } from 'antd'
+import { useEffect, useState } from 'react'
+import { FlexGrid } from '../../../components/grid/FlexGrid'
+import { ArticleItem } from '../../../components/list/article/ArticleItem'
+import { CoverImage } from '../../../components/media/CoverImage'
+import { Swiper } from '../../../components/media/Swiper'
+import { usePageModule } from '../../../hooks/usePageModule'
+import { Article } from '../../../typing'
+import { Panel } from '../../shared/Panel'
 
 export const HomePage = () => {
-
   const { loading, pageModule, findModuleArticles } = usePageModule()
 
   const [swiperItems, setSwiperItems] = useState<Article[]>([])
@@ -34,7 +33,7 @@ export const HomePage = () => {
       )}
 
       <Panel>
-        <FlexGrid gutter={[40, 40]} span={1/5}>
+        <FlexGrid gutter={[40, 40]} span={1 / 5}>
           {pageModule.articles.map(article => (
             <ArticleItem
               key={article.id}
@@ -45,7 +44,6 @@ export const HomePage = () => {
           ))}
         </FlexGrid>
       </Panel>
-
     </div>
   )
 }

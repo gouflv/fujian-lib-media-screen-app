@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {ThemeProps} from '../../styles/theme'
+import { ThemeProps } from '../../styles/theme'
 
 export const Article = styled.article`
   font-size: ${(props: ThemeProps) => props.theme.font.lg} !important;

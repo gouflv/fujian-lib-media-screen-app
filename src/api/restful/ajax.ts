@@ -1,5 +1,10 @@
-import axios, {AxiosError, AxiosRequestConfig, AxiosResponse, Method} from 'axios'
-import {API_BASE} from '../../config'
+import axios, {
+  AxiosError,
+  AxiosRequestConfig,
+  AxiosResponse,
+  Method
+} from 'axios'
+import { API_BASE } from '../../config'
 
 interface AjaxOptions {
   baseURL?: string
@@ -11,7 +16,6 @@ interface AjaxOptions {
 export type ServerResponseData = any
 
 export const ajax = (url: string, options: AjaxOptions) => {
-
   const axiosOptions: AxiosRequestConfig = {
     baseURL: options.baseURL || API_BASE,
     headers: options.headers,

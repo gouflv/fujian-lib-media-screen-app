@@ -1,10 +1,10 @@
-import {FC} from 'react'
+import { FC } from 'react'
 import styled from 'styled-components'
 import logo from '../assets/logo.png'
-import {px2vw} from '../styles/utils'
-import {HeaderNav} from './HeaderNav'
-import {SearchBar} from './SearchBtn'
-import {SideNav} from './SideNav'
+import { px2vw } from '../styles/utils'
+import { HeaderNav } from './HeaderNav'
+import { SearchBar } from './SearchBtn'
+import { SideNav } from './SideNav'
 
 export const Layout: FC = props => {
   function reload() {
@@ -21,14 +21,11 @@ export const Layout: FC = props => {
 
       <div className='content'>
         <SideNav />
-        <main>
-          {props.children}
-        </main>
+        <main>{props.children}</main>
       </div>
     </Container>
   )
 }
-
 
 const Container = styled.div`
   height: 100vh;

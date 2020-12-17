@@ -1,8 +1,8 @@
 import constate from 'constate'
 import _ from 'lodash'
-import {useEffect, useState} from 'react'
-import {store} from '../stores'
-import {Channel} from '../typing'
+import { useEffect, useState } from 'react'
+import { store } from '../stores'
+import { Channel } from '../typing'
 
 const [ChannelProvider, useChannelContext] = constate(() => {
   const [loading, setLoading] = useState(true)
@@ -42,5 +42,4 @@ const [ChannelProvider, useChannelContext] = constate(() => {
 
 ChannelProvider.displayName = 'ChannelProvider'
 
-export {ChannelProvider, useChannelContext}
-
+export { ChannelProvider, useChannelContext }

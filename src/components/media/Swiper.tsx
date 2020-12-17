@@ -1,15 +1,15 @@
-import {FC, ReactNode} from 'react'
+import { FC, ReactNode } from 'react'
 import styled from 'styled-components'
-import SwiperCore, {Autoplay, EffectCoverflow} from 'swiper'
-import {Swiper as _Swiper, SwiperSlide} from 'swiper/react'
-import {borderRadius} from '../../styles/theme'
-import {px2vw} from '../../styles/utils'
-import {Article} from '../../typing'
+import SwiperCore, { Autoplay, EffectCoverflow } from 'swiper'
+import { Swiper as _Swiper, SwiperSlide } from 'swiper/react'
+import { borderRadius } from '../../styles/theme'
+import { px2vw } from '../../styles/utils'
+import { Article } from '../../typing'
 
 SwiperCore.use([Autoplay, EffectCoverflow])
 
 export const Swiper: FC<{
-  items: Article[],
+  items: Article[]
   onClick: (item: Article) => void
   renderItem: (data: Article) => ReactNode
 }> = props => {
@@ -32,9 +32,7 @@ export const Swiper: FC<{
       onClick={onClick}
     >
       {props.items.map(item => (
-        <SwiperSlide key={item.id}>
-          {props.renderItem(item)}
-        </SwiperSlide>
+        <SwiperSlide key={item.id}>{props.renderItem(item)}</SwiperSlide>
       ))}
     </StyledSwiper>
   )

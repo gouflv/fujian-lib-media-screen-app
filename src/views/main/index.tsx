@@ -1,10 +1,10 @@
-import {FC, useEffect, useState} from 'react'
-import {useChannelContext} from '../../hooks/useChannels'
-import {Channel} from '../../typing'
-import {HomePage} from './home'
+import { FC, useEffect, useState } from 'react'
+import { useChannelContext } from '../../hooks/useChannels'
+import { Channel } from '../../typing'
+import { HomePage } from './home'
 
 export const Main: FC = () => {
-  const {currentChannel} =useChannelContext()
+  const { currentChannel } = useChannelContext()
 
   const [top, set] = useState<Channel>()
 
