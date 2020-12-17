@@ -1,4 +1,5 @@
-import {useEffect, useState} from 'react'
+import _ from 'lodash'
+import {useCallback, useEffect, useState} from 'react'
 import {store} from '../stores'
 import {PageModule} from '../typing'
 import {useChannelContext} from './useChannels'
@@ -19,8 +20,16 @@ export function usePageModule() {
     }
   }, [currentChannel])
 
+  const findModuleArticles = useCallback((name: string) => {
+    return _.chain(pageModule?.modules)
+      .find(mo => mo.channel.name === name)
+      .get('articles', [])
+      .value()
+  }, [pageModule])
+
   return {
     loading,
-    pageModule
+    pageModule,
+    findModuleArticles
   }
 }
