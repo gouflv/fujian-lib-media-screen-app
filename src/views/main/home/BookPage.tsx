@@ -50,7 +50,9 @@ export const BookPage = () => {
               {g.books.map(b => (
                 <BookCard key={b.id} onClick={() => openDetail(b)}>
                   <CoverImage url={b.thumbnail} height={210} />
-                  <TextEllipsis className='content'>{b.title}</TextEllipsis>
+                  <TextEllipsis className='content' line={2}>
+                    {b.title}
+                  </TextEllipsis>
                 </BookCard>
               ))}
             </FlexGrid>
