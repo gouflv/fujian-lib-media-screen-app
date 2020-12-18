@@ -14,8 +14,12 @@ export const FlexGrid = styled.div<{
 
   > div {
     flex: 0 0
-      calc(${props => props.span * 100}% - ${props => px2vw(props.gutter[0])});
+      calc(
+        ${props => (props.span * 100).toFixed(6)}% -
+          ${props => px2vw(props.gutter[0])}
+      );
     margin: ${props => px2vw(props.gutter[1] / 2)}
       ${props => px2vw(props.gutter[0] / 2)};
+    min-width: 0;
   }
 `

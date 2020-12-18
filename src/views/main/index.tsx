@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import { useChannelContext } from '../../hooks/useChannelContext'
 import { Channel } from '../../typing'
-import { HomePage } from './home'
+import { Home } from './home'
 
 export const Main: FC = () => {
   const { currentChannel } = useChannelContext()
@@ -17,7 +17,7 @@ export const Main: FC = () => {
   function renderPage() {
     switch (top?.name) {
       case '首页':
-        return <HomePage />
+        return <Home />
       case '品牌':
       case '活动':
       case '视听':

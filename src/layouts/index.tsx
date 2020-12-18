@@ -19,7 +19,7 @@ export const Layout: FC = props => {
         <SearchBar />
       </Header>
 
-      <div className='content'>
+      <div className='layout-content'>
         <SideNav />
         <main>{props.children}</main>
       </div>
@@ -33,7 +33,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  .content {
+  .layout-content {
     flex: auto;
     min-height: 0;
     display: flex;

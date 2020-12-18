@@ -38,3 +38,17 @@ export interface PageModule {
   modules: ModuleArticles[]
   articles: Article[]
 }
+
+export interface Book {
+  id: number
+  title: string
+  author: string
+  thumbnail: string
+  file: string
+  _meta: any
+}
+
+export interface BookGroup {
+  group: { id: number; name: string }
+  books: Book[]
+}

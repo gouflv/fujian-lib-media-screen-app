@@ -13,6 +13,7 @@ export function usePageModule() {
 
   useEffect(() => {
     if (currentChannel[1]) {
+      setLoading(true)
       return autoUnsubscribe(
         store.pageModule
           .findPageModule(currentChannel[1].id)
