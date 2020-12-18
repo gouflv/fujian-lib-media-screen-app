@@ -13,11 +13,7 @@ import { dateFormat } from '../../utils/format'
 export const ArticleContent = () => {
   const { data } = useDialogContext()
 
-  const [article, set] = useState(() => data as T)
-  useEffect(() => {
-    set(data)
-  }, [data])
-
+  const article = data as T
   const type = article.docType
 
   const [loading, setLoading] = useState(true)

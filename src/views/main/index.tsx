@@ -20,7 +20,9 @@ export const Main: FC = () => {
         return <Home />
       case '品牌':
       case '活动':
+        return <Home />
       case '视听':
+        return <Home />
       default:
         return null
     }

@@ -1,28 +1,33 @@
+import { useMemo } from 'react'
 import { Dialog } from '../../components/dialog/Dialog'
 import { useDialogContext } from '../../hooks/useDialogContext'
+import { Article, DOCType } from '../../typing'
 import { ArticleContent } from './ArticleContent'
+import { MediaContent } from './MediaContent'
 
 export const GlobalDialog = () => {
-  const { visible, type, closeDialog } = useDialogContext()
+  const { visible, data, closeDialog } = useDialogContext()
+
+  const type = useMemo(() => data && (data as Article).docType, [data])
 
   function renderDialogContent() {
     let Cmp: any
     switch (type) {
-      case 'article':
+      case DOCType.NEWS:
         Cmp = <ArticleContent />
         break
-      case 'media':
-        Cmp = <ArticleContent />
+      case DOCType.VIDEO:
+        Cmp = <MediaContent />
         break
-      case 'book':
-        Cmp = <ArticleContent />
-        break
+      // case 'book':
+      //   Cmp = <ArticleContent />
+      //   break
     }
     return Cmp
   }
 
   return (
-    <Dialog visible={visible} onCancel={closeDialog}>
+    <Dialog visible={visible} onCancel={closeDialog} destroyOnClose>
       {renderDialogContent()}
     </Dialog>
   )

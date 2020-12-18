@@ -4,6 +4,8 @@ import { px2vw } from '../../styles/utils'
 export const FlexScrollWrapper = styled.div`
   flex: auto;
   min-height: 0;
+  display: flex;
+  flex-direction: column;
   padding: ${px2vw(40)} ${px2vw(60)};
   overflow-y: auto;
 `

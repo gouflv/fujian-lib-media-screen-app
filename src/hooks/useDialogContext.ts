@@ -1,16 +1,12 @@
 import constate from 'constate'
 import { useState } from 'react'
 
-type DialogDataType = 'article' | 'book' | 'media'
-
 const [DialogProvider, useDialogContext] = constate(() => {
   const [visible, setVisible] = useState(false)
 
-  const [type, setType] = useState<DialogDataType>()
   const [data, setData] = useState<any>()
 
-  function openDialog(type: DialogDataType, data) {
-    setType(type)
+  function openDialog(data) {
     setData(data)
     setVisible(true)
   }
@@ -20,7 +16,6 @@ const [DialogProvider, useDialogContext] = constate(() => {
 
   return {
     visible,
-    type,
     data,
     openDialog,
     closeDialog

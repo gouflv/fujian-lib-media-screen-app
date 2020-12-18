@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { ThemeProps } from '../../styles/theme'
 import { px2vw } from '../../styles/utils'
 
-export const ArticleHeader = styled.header<{ center: boolean }>`
+export const ArticleHeader = styled.header<{ center?: boolean }>`
   margin-bottom: 40px;
   text-align: ${props => (props.center ? 'center' : 'left')};
 

@@ -2,7 +2,7 @@ import { Modal } from 'antd'
 import { ModalProps } from 'antd/es/modal'
 import { FC } from 'react'
 import styled from 'styled-components'
-import { borderRadius } from '../../styles/theme'
+import { borderRadius, ThemeProps } from '../../styles/theme'
 import { px2vw } from '../../styles/utils'
 
 interface DialogProps extends ModalProps {}
@@ -46,6 +46,7 @@ const StyledModal = styled(Modal)`
     display: flex;
     flex-direction: column;
     padding: 0;
+    font-size: ${(props: ThemeProps) => props.theme.font.base};
   }
 `
 

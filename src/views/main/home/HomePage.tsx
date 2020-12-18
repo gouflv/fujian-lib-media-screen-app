@@ -1,4 +1,3 @@
-import { Spin } from 'antd'
 import { useEffect, useState } from 'react'
 import { FlexGrid } from '../../../components/grid/FlexGrid'
 import { ArticleItem } from '../../../components/list/article/ArticleItem'
@@ -32,7 +31,7 @@ export const HomePage = () => {
             <Swiper
               items={swiperItems}
               renderItem={data => <CoverImage url={data.thumbnail} />}
-              onClick={data => openDialog('article', data)}
+              onClick={data => openDialog(data)}
             />
           </div>
         </Panel>
@@ -46,7 +45,7 @@ export const HomePage = () => {
               thumb={article.thumbnail}
               title={article.title}
               thumbHeight={180}
-              onClick={() => openDialog('article', article)}
+              onClick={() => openDialog(article)}
             />
           ))}
         </FlexGrid>
