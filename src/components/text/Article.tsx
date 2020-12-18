@@ -1,21 +1,26 @@
 import styled from 'styled-components'
-import { ThemeProps } from '../../styles/theme'
+import { px2vw } from '../../styles/utils'
 
 export const Article = styled.article`
-  font-size: ${(props: ThemeProps) => props.theme.font.lg} !important;
-  color: #333 !important;
   max-width: 40em;
   margin: auto;
-  pointer-events: none;
+  font-size: ${px2vw(28)} !important;
+  color: #333 !important;
 
   p {
     margin: 1rem 0 !important;
-    font-size: ${(props: ThemeProps) => props.theme.font.lg} + 4 !important;
+    font-size: ${px2vw(28)} !important;
     line-height: 1.8 !important;
     text-align: justify !important;
   }
 
   img {
     border-radius: 4px;
+  }
+
+  p > img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 `

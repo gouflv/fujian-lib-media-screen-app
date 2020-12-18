@@ -2,6 +2,7 @@ import _ from 'lodash'
 import { useCallback, useEffect, useState } from 'react'
 import { store } from '../stores'
 import { PageModule } from '../typing'
+import { autoUnsubscribe } from '../utils/autoUnsubscribe'
 import { useChannelContext } from './useChannelContext'
 
 export function usePageModule() {
@@ -11,16 +12,16 @@ export function usePageModule() {
   const [pageModule, set] = useState<PageModule>()
 
   useEffect(() => {
-    if (!currentChannel[1]) {
-      return
+    if (currentChannel[1]) {
+      return autoUnsubscribe(
+        store.pageModule
+          .findPageModule(currentChannel[1].id)
+          .subscribe(data => {
+            set(data)
+            setLoading(false)
+          })
+      )
     }
-    const subscription = store.pageModule
-      .findPageModule(currentChannel[1].id)
-      .subscribe(data => {
-        set(data)
-        setLoading(false)
-      })
-    return () => subscription && subscription.unsubscribe()
   }, [currentChannel])
 
   const findModuleArticles = useCallback(

@@ -3,6 +3,7 @@ import _ from 'lodash'
 import { useEffect, useState } from 'react'
 import { store } from '../stores'
 import { Channel } from '../typing'
+import { autoUnsubscribe } from '../utils/autoUnsubscribe'
 
 const [ChannelProvider, useChannelContext] = constate(() => {
   const [loading, setLoading] = useState(true)
@@ -24,12 +25,13 @@ const [ChannelProvider, useChannelContext] = constate(() => {
   }
 
   useEffect(() => {
-    const subscription = store.channel.findAll().subscribe(value => {
-      setLoading(false)
-      setChannels(value)
-      setTopChannel(_.first(value) as Channel)
-    })
-    return subscription.unsubscribe
+    return autoUnsubscribe(
+      store.channel.findAll().subscribe(value => {
+        setLoading(false)
+        setChannels(value)
+        setTopChannel(_.first(value) as Channel)
+      })
+    )
   }, [])
 
   return {

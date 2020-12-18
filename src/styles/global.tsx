@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: SimSun, serif;
+    font-family: Droid Serif, SimSun, serif;
     font-size: ${px2vw(20)};
     color: #333;
   }

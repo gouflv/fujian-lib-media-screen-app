@@ -45,7 +45,7 @@ const StyledModal = styled(Modal)`
     flex: auto;
     display: flex;
     flex-direction: column;
-    padding: ${px2vw(40)} ${px2vw(60)};
+    padding: 0;
   }
 `
 

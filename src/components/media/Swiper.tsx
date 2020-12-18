@@ -11,12 +11,8 @@ SwiperCore.use([Autoplay, EffectCoverflow])
 export const Swiper: FC<{
   items: Article[]
   onClick: (item: Article) => void
-  renderItem: (data: Article) => ReactNode
+  renderItem: (item: Article) => ReactNode
 }> = props => {
-  function onClick(_, index) {
-    props.onClick(props.items[index])
-  }
-
   return (
     <StyledSwiper
       loop={true}
@@ -29,10 +25,11 @@ export const Swiper: FC<{
         depth: (document.body.clientWidth / 1280) * 400
       }}
       autoplay={{ delay: 6000 }}
-      onClick={onClick}
     >
       {props.items.map(item => (
-        <SwiperSlide key={item.id}>{props.renderItem(item)}</SwiperSlide>
+        <SwiperSlide key={item.id} onClick={() => props.onClick(item)}>
+          {props.renderItem(item)}
+        </SwiperSlide>
       ))}
     </StyledSwiper>
   )

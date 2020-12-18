@@ -20,7 +20,7 @@ export enum DOCType {
 }
 
 export interface Article {
-  id: string
+  id: number
   actionType: ActionType
   docType: DOCType
   listTitle: string

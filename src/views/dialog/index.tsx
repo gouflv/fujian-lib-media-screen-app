@@ -1,21 +1,21 @@
 import { Dialog } from '../../components/dialog/Dialog'
 import { useDialogContext } from '../../hooks/useDialogContext'
-import { Article } from './Article'
+import { ArticleContent } from './ArticleContent'
 
 export const GlobalDialog = () => {
-  const { visible, type, data, closeDialog } = useDialogContext()
+  const { visible, type, closeDialog } = useDialogContext()
 
   function renderDialogContent() {
     let Cmp: any
     switch (type) {
       case 'article':
-        Cmp = <Article />
+        Cmp = <ArticleContent />
         break
       case 'media':
-        Cmp = <Article />
+        Cmp = <ArticleContent />
         break
       case 'book':
-        Cmp = <Article />
+        Cmp = <ArticleContent />
         break
     }
     return Cmp

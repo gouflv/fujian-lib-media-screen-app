@@ -29,7 +29,7 @@ export const HomePage = () => {
           <Swiper
             items={swiperItems}
             renderItem={data => <CoverImage url={data.thumbnail} />}
-            onClick={() => {}}
+            onClick={data => openDialog('article', data)}
           />
         </Panel>
       )}

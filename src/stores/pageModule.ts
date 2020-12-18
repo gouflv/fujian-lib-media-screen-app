@@ -47,6 +47,10 @@ class PageModuleStore {
       })
       .pipe(map(data => _.map(data, reduceArticle)))
   }
+
+  findArticleDetail(id: number) {
+    return request.get(`article/api/articles/${id}`).pipe(map(reduceArticle))
+  }
 }
 
 export const pageModule = new PageModuleStore()
