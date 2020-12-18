@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import { useChannelContext } from '../../hooks/useChannelContext'
 import { Channel } from '../../typing'
+import { Brand } from './brand'
 import { Home } from './home'
 
 export const Main: FC = () => {
@@ -19,6 +20,7 @@ export const Main: FC = () => {
       case '首页':
         return <Home />
       case '品牌':
+        return <Brand />
       case '活动':
         return <Home />
       case '视听':

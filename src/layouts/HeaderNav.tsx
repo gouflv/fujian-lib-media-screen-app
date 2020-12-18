@@ -32,6 +32,11 @@ export const HeaderNav = () => {
       return
     }
 
+    if (top.name === '品牌') {
+      setMenu([])
+      return
+    }
+
     setMenu(children)
   }, [currentChannel])
 
