@@ -1,6 +1,9 @@
 const pxToVW = require('postcss-px-to-viewport')
 
 module.exports = {
+  babel: {
+    plugins: [['babel-plugin-styled-components']]
+  },
   style: {
     postcss: {
       plugins: [
@@ -11,4 +14,3 @@ module.exports = {
     }
   }
 }
-
