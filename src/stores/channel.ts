@@ -35,7 +35,11 @@ class ChannelStore {
         channelId: parentId,
         size: 100
       })
-      .pipe(map(data => _.map(data, reduceChannel)))
+      .pipe(
+        map(data => {
+          return _.orderBy(_.map(data, reduceChannel), 'order')
+        })
+      )
   }
 
   private parseChannelData(data) {

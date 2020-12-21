@@ -31,3 +31,15 @@ export const borderRadius = css`
 export const boxShadow = css`
   box-shadow: ${(props: ThemeProps) => props.theme.boxShadow.base};
 `
+
+export const bgCover = css`
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+`
+
+export const bgContain = css`
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+`

@@ -1,29 +1,31 @@
 import _ from 'lodash'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { store } from '../stores'
 import { PageModule } from '../typing'
 import { autoUnsubscribe } from '../utils/autoUnsubscribe'
 import { useChannelContext } from './useChannelContext'
 
-export function usePageModule() {
+export function usePageModule(channelId?: number) {
   const { currentChannel } = useChannelContext()
+
+  const currentChannelId = useMemo(() => {
+    return channelId ? channelId : currentChannel[1] && currentChannel[1].id
+  }, [currentChannel, channelId])
 
   const [loading, setLoading] = useState(true)
   const [pageModule, set] = useState<PageModule>()
 
   useEffect(() => {
-    if (currentChannel[1]) {
+    if (currentChannelId) {
       setLoading(true)
       return autoUnsubscribe(
-        store.pageModule
-          .findPageModule(currentChannel[1].id)
-          .subscribe(data => {
-            set(data)
-            setLoading(false)
-          })
+        store.pageModule.findPageModule(currentChannelId).subscribe(data => {
+          set(data)
+          setLoading(false)
+        })
       )
     }
-  }, [currentChannel])
+  }, [currentChannelId])
 
   const findModuleArticles = useCallback(
     (name: string) => {
