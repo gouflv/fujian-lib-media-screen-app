@@ -21,17 +21,6 @@ export const HeaderNav = () => {
     const top = currentChannel[0]
     const children = top.children || []
 
-    if (top.name === '首页') {
-      setMenu(
-        HomeSubChannelName.reduce<Channel[]>((res, name) => {
-          const m = _.find(children, { name })
-          m && res.push(m)
-          return res
-        }, [])
-      )
-      return
-    }
-
     if (top.name === '品牌') {
       setMenu([])
       return

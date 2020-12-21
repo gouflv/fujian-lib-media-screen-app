@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { forkJoin, of } from 'rxjs'
 import { map, mergeMap, tap } from 'rxjs/operators'
 import { request } from '../api'
-import { TopChannels } from '../config'
+import { HomeSubChannelName, TopChannels } from '../config'
 import { Channel } from '../typing'
 
 class ChannelStore {
@@ -16,7 +16,7 @@ class ChannelStore {
     return ChannelStore.findChannel().pipe(
       map(data => this.parseChannelData(data)),
       mergeMap(data =>
-        forkJoin(_.map(data, c => this.findSubChannel(c.id))).pipe(
+        forkJoin(_.map(data, c => this.findSubChannel(c))).pipe(
           map(subChannels =>
             _.map(data, (d, i) => ({
               ...d,
@@ -29,15 +29,23 @@ class ChannelStore {
     )
   }
 
-  findSubChannel(parentId: number) {
+  findSubChannel(parent: Channel) {
     return request
       .get('article/api/channels/getChildId', {
-        channelId: parentId,
+        channelId: parent.id,
         size: 100
       })
+      .pipe(map(data => _.orderBy(_.map(data, reduceChannel), 'order')))
       .pipe(
-        map(data => {
-          return _.orderBy(_.map(data, reduceChannel), 'order')
+        map(channels => {
+          if (parent.name === '首页') {
+            return HomeSubChannelName.reduce<Channel[]>((res, name) => {
+              const m = _.find(channels, { name })
+              m && res.push(m)
+              return res
+            }, [])
+          }
+          return channels
         })
       )
   }

@@ -124,7 +124,8 @@ const BookDetail = styled.div`
     ${boxShadow}
   }
   .content {
-    margin-left: ${px2vw(60)};
+    margin-left: ${px2vw(40)};
+    margin-right: ${px2vw(80)};
     font-size: ${(props: ThemeProps) => props.theme.font.lg};
     .title {
       margin-bottom: ${px2vw(10)};
