@@ -1,7 +1,27 @@
+import { FC, memo, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { px2vw } from '../../styles/utils'
 
-export const Article = styled.article<{ fontSize?: number }>`
+export const Article: FC<{ html: string; fontSize?: number }> = memo(props => {
+  const ref = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (ref.current) {
+      const el = ref.current.querySelectorAll('img[onclick]')
+      el.forEach(e => e.removeAttribute('onclick'))
+    }
+  }, [props.html])
+
+  return (
+    <StyledArticle
+      ref={ref}
+      dangerouslySetInnerHTML={{ __html: props.html }}
+      {...props}
+    />
+  )
+})
+
+export const StyledArticle = styled.article<{ fontSize?: number }>`
   max-width: 40em;
   margin: auto;
   font-size: ${props => px2vw(props.fontSize || 28)} !important;

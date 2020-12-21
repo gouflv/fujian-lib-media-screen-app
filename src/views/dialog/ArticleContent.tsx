@@ -53,9 +53,7 @@ export const ArticleContent = () => {
         </ArticleHeader>
 
         <main className='body'>
-          {type === DOCType.NEWS && (
-            <Article dangerouslySetInnerHTML={{ __html: detail }} />
-          )}
+          {type === DOCType.NEWS && <Article html={detail} />}
         </main>
       </ArticleWrapper>
     </FlexScrollWrapper>

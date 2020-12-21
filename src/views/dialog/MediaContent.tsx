@@ -23,11 +23,7 @@ export const MediaContent = () => {
         <Video url={article._meta.metaInfo.linkDoc} />
         <div className='content'>
           <div className='title'>简介</div>
-          <Article
-            dangerouslySetInnerHTML={{
-              __html: article._meta.metaInfo.videoDoc.htmlContent
-            }}
-          />
+          <Article html={article._meta.metaInfo.videoDoc.htmlContent} />
         </div>
       </MediaWrapper>
     </FlexScrollWrapper>
