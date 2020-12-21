@@ -22,12 +22,19 @@ export const ArticleContent = () => {
   useEffect(() => {
     setLoading(true)
 
-    return autoUnsubscribe(
-      request.get(article._meta.contentUrl).subscribe(res => {
-        setDetail(res.htmlContent)
-        setLoading(false)
-      })
-    )
+    if (article.docType === DOCType.NEWS) {
+      return autoUnsubscribe(
+        request.get(article._meta.contentUrl).subscribe(res => {
+          setDetail(res.htmlContent)
+          setLoading(false)
+        })
+      )
+    }
+
+    if (article.docType === DOCType.ACTIVITY) {
+      setDetail(article._meta.metaInfo.activeDoc.htmlContent)
+      setLoading(false)
+    }
   }, [article])
 
   if (loading) {
@@ -53,7 +60,7 @@ export const ArticleContent = () => {
         </ArticleHeader>
 
         <main className='body'>
-          {type === DOCType.NEWS && <Article html={detail} />}
+          <Article html={detail} />
         </main>
       </ArticleWrapper>
     </FlexScrollWrapper>

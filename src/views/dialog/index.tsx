@@ -14,14 +14,12 @@ export const GlobalDialog = () => {
     let Cmp: any
     switch (type) {
       case DOCType.NEWS:
+      case DOCType.ACTIVITY:
         Cmp = <ArticleContent />
         break
       case DOCType.VIDEO:
         Cmp = <MediaContent />
         break
-      // case 'book':
-      //   Cmp = <ArticleContent />
-      //   break
     }
     return Cmp
   }
