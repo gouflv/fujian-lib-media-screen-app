@@ -21,7 +21,7 @@ export const BrandDetail: FC<{
 }> = props => {
   const { visible, data, onCancel } = props
 
-  const { loading, pageModule } = usePageModule(data.id)
+  const { loading, pageModule } = usePageModule(data)
   const { openDialog } = useDialogContext()
 
   // tab
@@ -58,7 +58,7 @@ export const BrandDetail: FC<{
       <FlexScrollWrapper>
         {loading && <Loading />}
 
-        {!loading && tabs.length && (
+        {!loading && !!tabs.length && (
           <div>
             <Tabs
               tabs={tabs}

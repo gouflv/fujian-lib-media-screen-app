@@ -2,12 +2,19 @@ import _ from 'lodash'
 import { forkJoin, of } from 'rxjs'
 import { map, mergeMap } from 'rxjs/operators'
 import { request } from '../api'
-import { Article, Book, BookGroup, ModuleArticles, PageModule } from '../typing'
+import {
+  Article,
+  Book,
+  BookGroup,
+  Channel,
+  ModuleArticles,
+  PageModule
+} from '../typing'
 import { store } from './index'
 
 class PageModuleStore {
-  findPageModule(channelId: number) {
-    return store.channel.findSubChannel(channelId).pipe(
+  findPageModule(channel: Channel) {
+    return store.channel.findSubChannel(channel).pipe(
       // merge ModuleArticles
       mergeMap(channels => {
         if (!channels.length) {
@@ -30,7 +37,7 @@ class PageModuleStore {
       }),
       // merge PageModule
       mergeMap(ma =>
-        forkJoin([this.findArticle({ channelId })]).pipe(
+        forkJoin([this.findArticle({ channelId: channel.id })]).pipe(
           map(
             articles =>
               ({
