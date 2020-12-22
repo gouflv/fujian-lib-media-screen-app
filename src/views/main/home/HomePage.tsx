@@ -7,7 +7,7 @@ import { Swiper } from '../../../components/media/Swiper'
 import { useDialogContext } from '../../../hooks/useDialogContext'
 import { usePageModule } from '../../../hooks/usePageModule'
 import { Article } from '../../../typing'
-import { Panel } from '../../shared/Panel'
+import { Panel } from '../../../components/Panel'
 
 export const HomePage = () => {
   const { openDialog } = useDialogContext()

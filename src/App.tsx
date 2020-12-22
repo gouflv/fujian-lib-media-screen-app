@@ -4,7 +4,7 @@ import { useAppInitialize } from './hooks/useAppInitialize'
 import { ChannelProvider } from './hooks/useChannelContext'
 import { DialogProvider } from './hooks/useDialogContext'
 import { Layout } from './layouts'
-import { GlobalDialog } from './views/dialog'
+import { GlobalDialog } from './views/global-dialog'
 import { Main } from './views/main'
 
 const Loading = styled.div`

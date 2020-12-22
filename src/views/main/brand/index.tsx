@@ -15,7 +15,7 @@ import {
   ThemeProps
 } from '../../../styles/theme'
 import { Channel } from '../../../typing'
-import { Panel } from '../../shared/Panel'
+import { Panel } from '../../../components/Panel'
 import { BrandDetail } from './detail'
 
 const BrandNames = [

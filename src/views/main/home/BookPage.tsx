@@ -11,7 +11,7 @@ import { borderRadius, boxShadow, ThemeProps } from '../../../styles/theme'
 import { px2vw } from '../../../styles/utils'
 import { Book, BookGroup } from '../../../typing'
 import { autoUnsubscribe } from '../../../utils/autoUnsubscribe'
-import { Panel, PanelHeader } from '../../shared/Panel'
+import { Panel, PanelHeader } from '../../../components/Panel'
 
 export const BookPage = () => {
   const [loading, setLoading] = useState(true)

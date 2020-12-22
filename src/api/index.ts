@@ -1,5 +1,6 @@
 import { from } from 'rxjs'
 import { SITE_ID } from '../config'
+import { retryWithDelay } from '../utils/rx-retry'
 import { GET, POST } from './restful/ajax'
 
 function getAuth() {
@@ -17,7 +18,7 @@ export const request = {
         headers: getAuth(),
         data: params
       })
-    )
+    ).pipe(retryWithDelay())
   },
 
   post(url: string, data?: Record<string, any>) {

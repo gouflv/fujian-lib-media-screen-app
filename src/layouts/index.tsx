@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import logo from '../assets/logo.png'
 import { px2vw } from '../styles/utils'
 import { HeaderNav } from './HeaderNav'
-import { SearchBar } from './SearchBtn'
+import { SearchBtn } from './SearchBtn'
 import { SideNav } from './SideNav'
 
 export const Layout: FC = props => {
@@ -16,7 +16,7 @@ export const Layout: FC = props => {
       <Header>
         <img src={logo} className='logo' alt='' onClick={reload} />
         <HeaderNav />
-        <SearchBar />
+        <SearchBtn />
       </Header>
 
       <div className='layout-content'>

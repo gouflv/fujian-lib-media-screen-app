@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { px2vw } from '../../styles/utils'
+import { px2vw } from '../styles/utils'
 
 export const Panel = styled.section`
   margin-bottom: ${px2vw(45)};

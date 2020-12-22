@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { borderRadius, ThemeProps } from '../../styles/theme'
 import { px2vw } from '../../styles/utils'
 
-interface DialogProps extends ModalProps {}
+export interface DialogProps extends ModalProps {}
 
 export const Dialog: FC<DialogProps> = props => {
   const { ...modalProps } = props
